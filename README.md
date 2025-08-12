@@ -275,6 +275,8 @@ const token = await getToken(messaging);
 **Projekt**: Service Engineering
 
 ---
+Die entwickelte "Daily" PWA erfüllt alle technischen Anforderungen der Aufgabe durch Integration multipler APIs und mobile-optimierte Implementierung. Die Wahl einer PWA als Entwicklungsansatz ist für den gegebenen Use-Case optimal, da sie schnelle Entwicklung mit breiter Kompatibilität verbindet.
+Cloud-basierte Entwicklungsplattformen wie Firebase bieten erhebliche Vorteile für moderne mobile App-Entwicklung, insbesondere für Teams ohne umfangreiche Backend-Expertise.
 
 ## Links & Referenzen
 
