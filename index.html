@@ -3,15 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a2e" />
     <title>Daily</title>
+    <!--PWA-->
+    <link rel="manifest"
+    href="data:application/json;base64,eyJuYW1lIjoiRGFpbHkgLSBUw6RnbGljaGUgSW5zcGlyYXRpb24iLCJzaG9ydF9uYW1lIjoiRGFpbHkiLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzFhMWEyZSIsInRoZW1lX2NvbG9yIjoiIzFhMWEyZSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI...","sizes":"144x144","type":"image/svg+xml"}]}">
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Daily</h1>
-    <div class="orb"></div>
-    <button id="generate">Generieren</button>
-    <div id="results">
-      <!-- Resultaten  -->
+    <div class="stars" id="stars"></div>
+    <div class="container">
+      <div class="header">
+        <h1 class="title">Daily</h1>
+        <p class="subtitle">Deine tägliche Inspiration</p>
+      </div>
+
+      <div class="fortune-ball-container">
+        <div class="fortune-ball" id="fortuneBall">
+          <div class="ball-outer">
+            <div class="ball-window">
+              <div class="ball-text" id="ballText">Drücke den Button!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="generate-button" id="generate">Generieren</button>
+
+      <div id="results">
+        <!-- Resultaten  -->
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

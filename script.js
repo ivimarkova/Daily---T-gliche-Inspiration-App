@@ -1,3 +1,32 @@
+// Create animated stars
+function createStars() {
+  const starsContainer = document.getElementById("stars");
+  const numberOfStars = 100;
+
+  for (let i = 0; i < numberOfStars; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    star.style.animationDuration = Math.random() * 3 + 2 + "s";
+    starsContainer.appendChild(star);
+  }
+}
+
+// Show ball text
+function showBallText(text) {
+  const ballText = document.getElementById("ballText");
+  ballText.textContent = text;
+  ballText.classList.add("show");
+  setTimeout(() => {
+    ballText.classList.remove("show");
+  }, 3000);
+}
+
+// Initialize stars
+createStars();
+
 //Token generieren
 const CLIENT_ID = "5f060b9ffac84a669e636a50f45f4ee5";
 const CLIENT_SECRET = "24a3dac8356d4c17b2a4554d68a8277b"; //nur Testing
@@ -16,7 +45,6 @@ async function getSpotifyToken() {
 }
 
 async function getSpotifyTrack(token) {
-  // Simple search for popular tracks - much more reliable!
   const response = await fetch(
     "https://api.spotify.com/v1/search?q=year:2024&type=track&market=DE&limit=50",
     {
@@ -48,6 +76,7 @@ async function getSpotifyTrack(token) {
 
 document.getElementById("generate").addEventListener("click", async () => {
   try {
+    showBallText("Die Kristallkugel erwacht...");
     // Added missing try block
     //1.Advice API
     const adviceResponse = await fetch("https://api.adviceslip.com/advice");
@@ -71,25 +100,38 @@ document.getElementById("generate").addEventListener("click", async () => {
         ? spotifyData.items[0]?.track
         : null;
 
-    document.getElementById("results").innerHTML = `
-      <p>💡Ratschlag: ${data.slip.advice}</p>
-      <p>🌞Feiertag: ${
-        todayHoliday ? todayHoliday.name : "Kein Feiertag heute😐"
-      }</p>
+    const resultsHTML = `
+      <div class="content-section show">
+        <h3>💡 Ratschlag des Tages</h3>
+        <p>${data.slip.advice}</p>
+      </div>
+      <div class="content-section show">
+        <h3>🌞 Feiertag des Tages</h3>
+        <p>${todayHoliday ? todayHoliday.name : "Kein Feiertag heute😐"}</p>
+      </div>
       ${
         track
           ? `
-        <p>♬⋆.˚Lied des Tages: ${track.name}</p>
-        <p>🎤Artist: ${track.artists[0].name}</p>
-        <a href="${track.external_urls.spotify}" target="_blank">🔗In Spotify öffnen</a>
+        <div class="content-section show">
+          <h3>♬⋆.˚ Lied des Tages</h3>
+          <p>${track.name}</p>
+          <p>🎤 Artist: ${track.artists[0].name}</p>
+          <a href="${track.external_urls.spotify}" class="spotify-link" target="_blank">🔗 In Spotify öffnen</a>
+        </div>
       `
-          : "<p>😔Kein Lied gefunden</p>"
+          : '<div class="content-section show"><p>😔 Kein Lied gefunden</p></div>'
       }
-    `; // Properly closed template literal
+    `;
+
+    document.getElementById("results").innerHTML = resultsHTML;
+    showBallText("Deine Inspiration ist bereit!");
   } catch (error) {
     console.error("Fehler:", error);
-    document.getElementById(
-      "results"
-    ).innerHTML = `<p style="color: red;">Es gab einen Fehler beim Laden der Daten. Bitte versuche es später erneut.</p>`;
+    document.getElementById("results").innerHTML = `
+      <div class="content-section show error">
+        <p>Es gab einen Fehler beim Laden der Daten. Bitte versuche es später erneut.</p>
+      </div>
+    `;
+    showBallText("Ups! Versuche es nochmal.");
   }
 });
