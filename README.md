@@ -145,7 +145,7 @@ Für diese inspirations-basierte App mit primär API-basiertem Content ist eine 
 
 Firebase ist Googles Backend-as-a-Service (BaaS) Plattform, die umfassende cloud-basierte Entwicklungstools für mobile Apps bietet.
 
-#### 🛠️ Kernfeatures:
+#### Kernfeatures:
 
 | Feature               | Beschreibung                                        |
 | --------------------- | --------------------------------------------------- |
