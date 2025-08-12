@@ -84,36 +84,45 @@ body {
 }
 
 .fortune-ball {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
+  width: 220px;
+  height: 220px;
+  margin: 30px auto;
   position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 20px rgba(106, 90, 205, 0.8));
+  animation: pulseGlow 4s infinite ease-in-out;
 }
 
 .fortune-ball:hover {
   transform: scale(1.05);
 }
-
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
 .ball-outer {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(174, 216, 255, 0.1) 50%,
-    rgba(100, 100, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(173, 216, 230, 0.3) 30%,
+    rgba(25, 25, 112, 0.6) 70%,
+    rgba(0, 0, 0, 0.9) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: inset 5px 5px 15px rgba(255, 255, 255, 0.1),
-    inset -5px -5px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(100, 100, 255, 0.3);
-  position: relative;
   overflow: hidden;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
-.ball-outer::before {
+.ball-outer::before,
+.ball-outer::after {
   content: "";
   position: absolute;
   top: -20%;
@@ -121,37 +130,76 @@ body {
   width: 140%;
   height: 140%;
   background: radial-gradient(
-    circle at 40% 40%,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0) 50%
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
   );
   border-radius: 50%;
+  animation: swirl 20s infinite linear;
+  mix-blend-mode: screen;
+}
+
+.ball-outer::after {
+  animation-direction: reverse;
+  background: radial-gradient(
+    circle,
+    rgba(173, 216, 230, 0.1) 0%,
+    transparent 80%
+  );
+}
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(106, 90, 205, 0.6));
+  }
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.9));
+  }
+}
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .ball-window {
   position: absolute;
-  bottom: 30px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 60px;
-  background: #000;
-  border-radius: 50px;
-  border: 2px solid #333;
+  width: 90px;
+  height: 50px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(173, 216, 230, 0.15) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(138, 43, 226, 0.4);
 }
 
 .ball-text {
-  color: #4ecdc4;
-  font-size: 10px;
-  text-align: center;
+  color: #e0faff;
+  font-size: 11px;
   font-weight: bold;
-  text-shadow: 0 0 10px #4ecdc4;
+  text-shadow: 0 0 8px #4ae0ff;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.7s ease;
+  padding: 5px;
 }
 
 .ball-text.show {
