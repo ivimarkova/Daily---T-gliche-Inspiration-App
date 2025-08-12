@@ -1,0 +1,20 @@
+{
+  "name": "daily-app",
+  "version": "1.0.0",
+  "description": "Service Engineering Project ,Informatik, Otto-von-Guericke Magdeburg\r Eine mobile App für tägliche Inspiration:  \r ->Lied des Tages (Spotify API)  \r ->Ratschlag (Advice Slip API)  \r ->Feiertag (Nager.Date API)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivimarkova/daily-inspo-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivimarkova/daily-inspo-app/issues"
+  },
+  "homepage": "https://github.com/ivimarkova/daily-inspo-app#readme"
+}
