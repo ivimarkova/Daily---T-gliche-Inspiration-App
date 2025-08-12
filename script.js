@@ -135,3 +135,41 @@ document.getElementById("generate").addEventListener("click", async () => {
     showBallText("Ups! Versuche es nochmal.");
   }
 });
+async function generateSnapshot() {
+  const results = document.getElementById("results");
+
+  // Временен елемент за скрийншот
+  const tempElement = document.createElement("div");
+  tempElement.className = "snapshot-container";
+
+  // Копиране на стиловете и съдържанието
+  tempElement.innerHTML = `
+    <div class="snapshot-header">
+      <h2>✨ Daily Inspiration ✨</h2>
+      <p>${new Date().toLocaleDateString("de-DE")}</p>
+    </div>
+    ${results.innerHTML}
+  `;
+
+  // Добавяне на звезди в snapshot
+  const starsSnapshot = document.createElement("div");
+  starsSnapshot.id = "snapshot-stars";
+  tempElement.prepend(starsSnapshot);
+
+  // Временно добавяне към DOM
+  document.body.appendChild(tempElement);
+
+  // Генериране на звезди в snapshot
+  createStars("snapshot-stars");
+
+  // Използване на html2canvas за създаване на изображение
+  const canvas = await html2canvas(tempElement, {
+    backgroundColor: "#0f0f1a",
+    scale: 2, // По-високо качество
+  });
+
+  // Премахване на временния елемент
+  document.body.removeChild(tempElement);
+
+  return canvas.toDataURL("image/png");
+}
