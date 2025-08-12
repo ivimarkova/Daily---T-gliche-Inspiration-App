@@ -282,4 +282,4 @@ const token = await getToken(messaging);
 - [Nager.Date API Documentation](https://date.nager.at/Api)
 - [Spotify Web API Documentation](https://developer.spotify.com/documentation/web-api/)
 - [Firebase Documentation](https://firebase.google.com/docs)
-  **© 2025 Ivayla Markova - Alle Rechte vorbehalten**
+  -**© 2025 Ivayla Markova - Alle Rechte vorbehalten**
