@@ -14,7 +14,7 @@ Eine mobile Progressive Web App (PWA), die täglich Inspiration durch personalis
 - **Animierter Sternenhimmel** im Hintergrund
 - **Progressive Web App** - installierbar auf allen Geräten
 
-## 🛠️ Technologie-Stack
+##  Technologie-Stack
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **Design**: Responsive Design, CSS Grid/Flexbox
@@ -172,7 +172,7 @@ Firebase ist Googles Backend-as-a-Service (BaaS) Plattform, die umfassende cloud
 3. **Kosten bei Skalierung**: Hohe Kosten bei großem Traffic
 4. **Eingeschränkte Kontrolle**: Begrenzte Anpassungsmöglichkeiten
 
-#### 💻 Beispiel-Integration in "Daily" App:
+####  Beispiel-Integration in "Daily" App:
 
 ```javascript
 // Firebase Integration für User Preferences
